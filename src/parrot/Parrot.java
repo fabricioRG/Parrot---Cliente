@@ -1,7 +1,8 @@
 package parrot;
 
 import parrot.backend.manejadores.ManejadorLectorXML;
-import parrot.frontend.entrada.LectorXML;
+import parrot.frontend.entrada.LecturaXML;
+import parrot.frontend.entrada.Login;
 
 /**
  *
@@ -13,8 +14,8 @@ public class Parrot {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LectorXML lector = new LectorXML();
-        lector.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
     }
     
 }

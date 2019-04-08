@@ -3,7 +3,7 @@ package parrot.backend.manejadores;
 import java.io.StringReader;
 import parrot.backend.analizadores.Lexer1;
 import parrot.backend.analizadores.parser;
-import parrot.frontend.entrada.LectorXML;
+import parrot.frontend.entrada.LecturaXML;
 
 /**
  *
@@ -11,7 +11,7 @@ import parrot.frontend.entrada.LectorXML;
  */
 public class ManejadorLectorXML {
 
-    private LectorXML lector = null;
+    private LecturaXML lector = null;
     private static ManejadorLectorXML INSTANCE = null;
 
     private  ManejadorLectorXML() {
@@ -30,7 +30,7 @@ public class ManejadorLectorXML {
         return INSTANCE;
     }
     
-    public void setLectorXML(LectorXML lector){
+    public void setLectorXML(LecturaXML lector){
         this.lector = lector;
     }
     

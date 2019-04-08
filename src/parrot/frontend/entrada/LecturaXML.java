@@ -3,18 +3,22 @@ package parrot.frontend.entrada;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import parrot.backend.manejadores.ManejadorLectorXML;
+import parrot.backend.usuario.Usuario;
 
 /**
  *
  * @author fabricio
  */
-public class LectorXML extends javax.swing.JFrame {
+public class LecturaXML extends javax.swing.JFrame {
 
     /**
      * Creates new form LectorXML
      */
     
-    public LectorXML() {
+    private Usuario user = null;
+    
+    public LecturaXML(Usuario user) {
+        this.user = user;
         ManejadorLectorXML.getInstance().setLectorXML(this);
         initComponents();
         this.setTitle("Parrot");
@@ -40,12 +44,17 @@ public class LectorXML extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jErroresPane = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(xmlText);
 
-        procesarButton.setBackground(new java.awt.Color(2, 176, 14));
+        procesarButton.setBackground(new java.awt.Color(0, 7, 124));
         procesarButton.setForeground(new java.awt.Color(254, 254, 254));
         procesarButton.setText("Procesar");
         procesarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +63,7 @@ public class LectorXML extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(225, 2, 6));
+        jButton2.setBackground(new java.awt.Color(1, 183, 189));
         jButton2.setForeground(new java.awt.Color(254, 254, 254));
         jButton2.setText("Limpiar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +92,7 @@ public class LectorXML extends javax.swing.JFrame {
                 .addComponent(procesarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -123,6 +132,32 @@ public class LectorXML extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jMenu1.setText("Usuario");
+
+        jMenuItem1.setText("Manejador Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Opciones");
+
+        jMenuItem5.setText("Exit");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,6 +185,15 @@ public class LectorXML extends javax.swing.JFrame {
         xmlText.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        UsuarioCRUD us = new UsuarioCRUD();
+        us.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     public JTextPane getjErroresPane() {
         return jErroresPane;
     }
@@ -172,6 +216,11 @@ public class LectorXML extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JTextPane jErroresPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
