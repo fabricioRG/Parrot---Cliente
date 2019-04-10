@@ -101,13 +101,13 @@ public class LecturaXML extends javax.swing.JFrame {
 
         jErroresPane.setEditable(false);
         jErroresPane.setBackground(new java.awt.Color(254, 254, 254));
-        jErroresPane.setForeground(new java.awt.Color(255, 6, 0));
+        jErroresPane.setForeground(new java.awt.Color(1, 18, 115));
         jErroresPane.setCaretColor(new java.awt.Color(1, 1, 1));
         jScrollPane2.setViewportView(jErroresPane);
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(254, 7, 1));
-        jLabel1.setText("Errores:");
+        jLabel1.setForeground(new java.awt.Color(0, 20, 144));
+        jLabel1.setText("Procesos:");
 
         javax.swing.GroupLayout erroresPaneLayout = new javax.swing.GroupLayout(erroresPane);
         erroresPane.setLayout(erroresPaneLayout);
@@ -177,8 +177,7 @@ public class LecturaXML extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void procesarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarButtonActionPerformed
-//        ManejadorLectorXML.getInstance().procesarTexto(this.xmlText.getText().trim());
-        ManejadorLectorXML.getInstance().initClient();
+        ManejadorLectorXML.getInstance().procesarTexto(this.xmlText.getText().trim(), user.getId());
     }//GEN-LAST:event_procesarButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

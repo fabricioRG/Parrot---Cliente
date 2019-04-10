@@ -33,7 +33,7 @@ public class ManejadorParser {
     
     
     public void showErrorMessege(String error) {
-        ManejadorLectorXML.getInstance().showErrorMessege(error);
+        ManejadorLectorXML.getInstance().showMessege(error);
         System.out.println(error);
     }
     

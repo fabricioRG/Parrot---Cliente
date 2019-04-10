@@ -16,11 +16,9 @@ public class ManejadorLectorXML {
 
     private LecturaXML lector = null;
     private static ManejadorLectorXML INSTANCE = null;
-    final String HOST = "localhost";
-    final int PUERTO = 8600;
-    Socket sc;
-    DataOutputStream mensaje;
-    DataInputStream entrada;
+
+    private DataOutputStream mensaje;
+    private DataInputStream entrada;
 
     private ManejadorLectorXML() {
     }
@@ -42,8 +40,7 @@ public class ManejadorLectorXML {
         this.lector = lector;
     }
 
-    public void procesarTexto(String entrada) {
-        this.lector.getErroresPane().setVisible(false);
+    public void procesarTexto(String entrada, String id) {
         StringReader sr = new StringReader(entrada);
         Lexer1 lexer = new Lexer1(sr);
         parser pars = new parser(lexer, ManejadorParser.getInstance());
@@ -52,32 +49,41 @@ public class ManejadorLectorXML {
                 throw new Exception("Entrada vacia, intente de nuevo");
             }
             pars.parse();
+            ManejadorLectorXML.getInstance().initClient(entrada, id);
         } catch (Exception ex) {
-            ex.printStackTrace();
-            showErrorMessege(ex.getMessage());
+            showMessege(ex.getMessage());
         }
     }
 
-    public void showErrorMessege(String error) {
+    public void showMessege(String error) {
         this.lector.getErroresPane().setVisible(true);
-        this.lector.getjErroresPane().setText(this.lector.getjErroresPane().getText() + error + "\n");
+        this.lector.getjErroresPane().setText(error);
     }
 
 //Cliente
-    public void initClient() /*ejecuta este metodo para correr el cliente */ {
+    public void initClient(String messege, String id) /*ejecuta este metodo para correr el cliente */ {
+
+        final String HOST = "localhost";
+        final int PUERTO = 5000;
+        DataInputStream in;
+        DataOutputStream out;
+        
+        String salida = "(" + id + ")\n" + "{" + messege + "}";
 
         try {
-            sc = new Socket(HOST, PUERTO);
-            /*conectar a un servidor en localhost con puerto 5000*/
-
-            //creamos el flujo de datos por el que se enviara un mensaje
-            mensaje = new DataOutputStream(sc.getOutputStream());
-
-            //enviamos el mensaje
-            mensaje.writeUTF("hola que tal!!");
-
-            //cerramos la conexión
+            Socket sc = new Socket(HOST, PUERTO);
+            
+            in = new DataInputStream(sc.getInputStream());
+            out = new DataOutputStream(sc.getOutputStream());
+            
+            out.writeUTF(salida);
+            
+            String mensaje = in.readUTF();
+            
+            lector.getjErroresPane().setText(mensaje);
+            
             sc.close();
+
         } catch (Exception e) {
 
             System.out.println("Error: " + e.getMessage());
