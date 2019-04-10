@@ -177,8 +177,8 @@ public class LecturaXML extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void procesarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarButtonActionPerformed
-        ManejadorLectorXML.getInstance().procesarTexto(this.xmlText.getText().trim());
-        
+//        ManejadorLectorXML.getInstance().procesarTexto(this.xmlText.getText().trim());
+        ManejadorLectorXML.getInstance().initClient();
     }//GEN-LAST:event_procesarButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
